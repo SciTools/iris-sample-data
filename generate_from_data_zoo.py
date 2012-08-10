@@ -32,10 +32,8 @@ def hovmoller(target_dir):
     
     # make time the dimension coordinate (wont be needed once Bill has #22)
     t = monthly_mean.coord('time')
-    print type(t)
     monthly_mean.remove_coord(t)
     monthly_mean.add_dim_coord(t, 0)
-    print monthly_mean
     
     iris.save(monthly_mean, os.path.join(target_dir, 'ostia_monthly.nc'))
     
@@ -98,7 +96,7 @@ def COP_1d(target_dir):
                                            )
                            )
         cube.attributes['Model scenario'] = scenario
-        iris.save(cube, '%s_north_america.nc' % scenario)
+        iris.save(cube, os.path.join(target_dir, '%s_north_america.nc' % scenario))
 
 def lagged_ensemble(target_dir):
     fname_template = os.path.join(DATA_ZOO, 'PP', 'GloSea4', 'prodf*_')
@@ -108,7 +106,6 @@ def lagged_ensemble(target_dir):
     
     
     for ensemble_num in range(14):
-        print ensemble_num
         ensemble_num = '%03i' % ensemble_num
         fnames = glob.glob(fname_template + ensemble_num + '.pp')
         # handle the missing ensemble
@@ -120,7 +117,7 @@ def lagged_ensemble(target_dir):
                     field.save(out)
 
 def custom_file_loading(target_dir):
-    fname = os.path.join(DATA_ZOO, 'ascii', 'NAME', '20100509_18Z_variablesource_12Z_VAAC', 'Fields_grid1_201005110600.txt')
+    fname = os.path.join(DATA_ZOO, 'ascii', 'NAME', 'Eyjafjallajokull', 'Fields_grid88_201005110600.txt')
     target = os.path.join(target_dir, 'NAME_output.txt')
     shutil.copy(fname, target)
 
@@ -140,7 +137,7 @@ def ukV2_in_userguide(target_dir):
     
     
 if __name__ == '__main__':
-    target_dir = './'
+    target_dir = os.path.join(os.path.dirname(__file__), 'sample_data')
     
     global_map(target_dir)
 #    custom_file_loading(target_dir)
