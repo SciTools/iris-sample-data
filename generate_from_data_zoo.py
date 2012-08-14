@@ -14,10 +14,12 @@ def global_map(target_dir):
     fname = os.path.join(DATA_ZOO, 'PP', 'aPPglob1', 'global.pp')
     target = os.path.join(target_dir, 'air_temp.pp')
     shutil.copy(fname, target)
+
     
 def custom_file_loading(target_dir):
     fname = os.path.join(DATA_ZOO, 'ascii', 'NAME', '20100509_18Z_variablesource_12Z_VAAC', 'Fields_grid1_201005110600.txt')
     shutil.copy(fname, target_dir)
+
     
 def hovmoller(target_dir):
     fname = os.path.join(DATA_ZOO, 'PP', 'ostia', 'ostia_sst_200604_201009_N216.pp')
@@ -36,6 +38,7 @@ def hovmoller(target_dir):
     monthly_mean.add_dim_coord(t, 0)
     
     iris.save(monthly_mean, os.path.join(target_dir, 'ostia_monthly.nc'))
+
     
 def rotated_pole(target_dir):
     fname = os.path.join(DATA_ZOO, 'PP', 'aPProt1', 'rotated.pp')
@@ -43,6 +46,7 @@ def rotated_pole(target_dir):
     # XXX consider taking a 20x20 window for meaning 
     cube = cube[::20, ::20]
     iris.save(cube, os.path.join(target_dir, 'rotated_pole.nc'))
+
     
 def deriving_phenomena(target_dir):
     fname = os.path.join(DATA_ZOO, 'PP', 'COLPEX', 'air_potential_and_air_pressure.pp')
@@ -59,6 +63,7 @@ def deriving_phenomena(target_dir):
         field.y_lower_bound = field.y_lower_bound[::5]
         field.y_upper_bound = field.y_upper_bound[::5]
         field.save(out)
+
                 
 def cross_section(target_dir):
     fname = os.path.join(DATA_ZOO, 'PP', 'COLPEX', 'theta_and_orog_subset.pp')
@@ -66,10 +71,12 @@ def cross_section(target_dir):
     cube = cube[0, :15, ...]
     iris.save(cube, os.path.join(target_dir, 'hybrid_height.nc'))
 
+
 def TEC(target_dir):
     fname = os.path.join(DATA_ZOO, 'NetCDF', 'space_weather', 'Test.nc')
     target = os.path.join(target_dir, 'space_weather.nc')
     shutil.copy(fname, target)
+
 
 def COP_maps(target_dir):
     for scenario in ['E1', 'A1B']:
@@ -85,6 +92,7 @@ def COP_maps(target_dir):
     target = os.path.join(target_dir, 'pre-industrial.pp')
     shutil.copy(fname, target)
     
+
 def COP_1d(target_dir):
     for scenario in ['E1', 'A1B']:
         fname = os.path.join(DATA_ZOO, 'PP', 'A1B-Image_E1', scenario, 
@@ -97,6 +105,7 @@ def COP_1d(target_dir):
                            )
         cube.attributes['Model scenario'] = scenario
         iris.save(cube, os.path.join(target_dir, '%s_north_america.nc' % scenario))
+
 
 def lagged_ensemble(target_dir):
     fname_template = os.path.join(DATA_ZOO, 'PP', 'GloSea4', 'prodf*_')
@@ -116,10 +125,12 @@ def lagged_ensemble(target_dir):
                 if field.stash == 'm01s00i024':
                     field.save(out)
 
+
 def custom_file_loading(target_dir):
     fname = os.path.join(DATA_ZOO, 'ascii', 'NAME', 'Eyjafjallajokull', 'Fields_grid88_201005110600.txt')
     target = os.path.join(target_dir, 'NAME_output.txt')
     shutil.copy(fname, target)
+
 
 def ukV2_in_userguide(target_dir):
     fname = os.path.join(DATA_ZOO, 'PP', 'ukV2', 'THOxayrk.pp')
@@ -139,8 +150,10 @@ def ukV2_in_userguide(target_dir):
 if __name__ == '__main__':
     target_dir = os.path.join(os.path.dirname(__file__), 'sample_data')
     
+    open(os.path.join(target_dir, 'version.txt'), 'w').write('1.0')
+    
     global_map(target_dir)
-#    custom_file_loading(target_dir)
+    custom_file_loading(target_dir)
     hovmoller(target_dir)
     rotated_pole(target_dir)
     deriving_phenomena(target_dir)
