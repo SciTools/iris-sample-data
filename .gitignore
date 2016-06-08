@@ -1,5 +1,10 @@
-.project
-.pydevproject
-*.pyc
-*.pyo
+*.py[co]
 
+iris_sample_data.egg-info
+
+# Created by editors
+*~
+\#*
+\.\#*
+*.swp
+*.ipynb_checkpoints*
