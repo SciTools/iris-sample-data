@@ -1,5 +1,7 @@
 *.py[co]
 
+build
+dist
 iris_sample_data.egg-info
 
 # Created by editors
