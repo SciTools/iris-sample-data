@@ -58,7 +58,9 @@ setup_args = dict(
     packages=[NAME],
     package_data=extract_package_data(),
     classifiers=[
-        'License :: OSI Approved :: Open Government License',
+        # For full license details, see
+        # http://reference.data.gov.uk/id/open-government-licence
+        'License :: Freely Distributable',
         'Development Status :: 1 - Planning Development Status',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
