@@ -59,7 +59,7 @@ setup_args = dict(
     package_data=extract_package_data(),
     classifiers=[
         # For full license details, see
-        # http://reference.data.gov.uk/id/open-government-licence
+        # http://www.nationalarchives.gov.uk/doc/open-government-licence
         'License :: Freely Distributable',
         'Development Status :: 1 - Planning Development Status',
         'Programming Language :: Python :: 2.7',
