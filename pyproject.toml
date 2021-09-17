@@ -1,0 +1,13 @@
+[build-system]
+# Defined by PEP 518
+requires = [
+    "setuptools>=45",
+    "setuptools_scm[toml]>=6.2",
+    "wheel"
+]
+# Defined by PEP 517
+build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools_scm]
+write_to = "iris_sample_data/_version.py"
