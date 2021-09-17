@@ -2,9 +2,7 @@
 
 import os
 
-
-# Iris sample data version.
-__version__ = '2.4.0dev'
+from ._version import version as __version__
 
 # Root directory containing the iris sample data.
-path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'sample_data')
+path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "sample_data")
