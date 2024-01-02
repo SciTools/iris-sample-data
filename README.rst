@@ -1,4 +1,4 @@
-This repository is a store for the data used in the iris examples.
+This repository is a store for the data used in the iris examples. 
 
 See the iris repository's INSTALL file for instructions of installation.
 
